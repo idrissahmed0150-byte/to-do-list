@@ -1,0 +1,140 @@
+@font-face {
+    font-family: "story-line";
+    src: url("./fonts/the\ storyline.otf");
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background: linear-gradient(135deg, #C8E6C9, #A5D6A7);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container{
+    width: 80%;
+    max-width: 500px;
+    min-height: 70vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #F1F8F4;
+    margin: 40px auto;
+    border-radius: 20px;
+    flex-direction: column;
+    padding: 30px 15;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.container h1{
+    font-family: "story-line";
+    font-weight: bold;
+    font-size: 4rem;
+    color: #2E7D32;
+    margin-bottom: 20px;
+}
+
+.input-wrapper{
+    display: flex;
+    width: 90%;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+input {
+    background-color: #ffffff;
+    border: 2px solid #A5D6A7;
+    border-radius: 10px;
+    padding: 12px 15px;
+    outline: none;
+    flex: 4;
+    font-size: 1rem;
+    transition: border-color 0.2s ease;
+}
+input:focus {
+    border-color: #66BB6A;
+}
+input::placeholder{
+    color: #9CA89E;
+}
+
+.Add{
+    background-color: #66BB6A;
+    border-style: none;
+    font-family: "story-line";
+    font-weight: bold;
+    font-size: 1.3rem;
+    border-radius: 10px;
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+@media (max-width: 480px){
+    .Add{
+        font-size: 1rem;
+    
+    }
+    input{
+        font-size: 0.9rem;
+        padding: 8px 10px;
+    }
+    .container h1{
+        font-size: 2.5rem;
+    }
+}
+.Add:hover{
+    background-color: #4CAF50;
+}
+.Add:active{
+    transform: scale(0.97);
+}
+
+.tasks{
+    width: 90%;
+    list-style: none;
+    font-size: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.tasks li{
+    background-color: #ffffff;
+    color: #2E3D2F;
+    padding: 12px 15px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    word-break: break-word;
+    border-left: 4px solid #81C784;
+}
+
+.delete{
+    background-color: #E57373;
+    border-style: none;
+    padding: 6px 14px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    border-radius: 8px;
+    color: #ffffff;
+    margin-left: 10px;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+.delete:hover{
+    background-color: #EF5350;
+}
+.delete:active{
+    transform: scale(0.95);
+}
