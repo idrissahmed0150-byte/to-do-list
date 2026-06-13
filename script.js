@@ -2,7 +2,6 @@ let tasks = document.querySelector(".tasks")
 let display = document.querySelector("input")
 let add = document.querySelector(".Add")
 
-
 let tasksArray = JSON.parse(localStorage.getItem("tasks")) || []
 
 function setDirection(element, text){
@@ -16,30 +15,8 @@ function setDirection(element, text){
     }
 }
 
-tasksArray.forEach(function(taskText){
-    let task = document.createElement("li")
-    task.textContent = taskText
-    setDirection(task, taskText)
-    tasks.appendChild(task)
-})
-
-
-add.addEventListener("click" , function(){
-    let task = document.createElement("li")
-    let deleteBtn = document.createElement("button")
-    let taskText = display.value         
-
-    deleteBtn.textContent = "Delete"
-    deleteBtn.classList.add("delete")
-    tasks.appendChild(task)
-    task.textContent = taskText        
-    setDirection(task, taskText)
-    tasksArray.push(taskText)
-    task.appendChild(deleteBtn)
-    localStorage.setItem("tasks", JSON.stringify(tasksArray))
-    display.value = ""
-
-        deleteBtn.addEventListener("click" , function(){
+function addDeleteHandler(deleteBtn, task, taskText){
+    deleteBtn.addEventListener("click", function(){
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -63,4 +40,38 @@ add.addEventListener("click" , function(){
             }
         })
     })
+}
+
+tasksArray.forEach(function(taskText){
+    let task = document.createElement("li")
+    let deleteBtn = document.createElement("button")
+
+    deleteBtn.textContent = "Delete"
+    deleteBtn.classList.add("delete")
+
+    task.textContent = taskText
+    setDirection(task, taskText)
+    task.appendChild(deleteBtn)
+    tasks.appendChild(task)
+
+    addDeleteHandler(deleteBtn, task, taskText)
+})
+
+add.addEventListener("click" , function(){
+    let task = document.createElement("li")
+    let deleteBtn = document.createElement("button")
+    let taskText = display.value
+
+    deleteBtn.textContent = "Delete"
+    deleteBtn.classList.add("delete")
+
+    tasks.appendChild(task)
+    task.textContent = taskText
+    setDirection(task, taskText)
+    tasksArray.push(taskText)
+    task.appendChild(deleteBtn)
+    localStorage.setItem("tasks", JSON.stringify(tasksArray))
+    display.value = ""
+
+    addDeleteHandler(deleteBtn, task, taskText)
 })
